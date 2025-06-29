@@ -1,0 +1,152 @@
+.header {
+  background-image: url('/src/images/header_background.png');
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+
+.header__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.header__top_white {
+  background-color: white;
+}
+
+.header__logo {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  margin: 30px 0 26px 104px;
+}
+
+.header__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header__title {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 60px;
+  width: 608px;
+  margin-top: 80px;
+  margin-bottom: 32px;
+}
+
+.header__subtitle {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  width: 608px;
+  margin-bottom: 88px;
+}
+
+.header__burger {
+  display: none;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.burger__icon {
+  width: 24px;
+  height: 2px;
+  background-color: white;
+  display: block;
+  position: relative;
+}
+
+.burger__icon::before,
+.burger__icon::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  background-color: white;
+  left: 0;
+}
+
+.burger__icon::before {
+  top: -8px;
+}
+
+.burger__icon::after {
+  top: 8px;
+}
+
+.header__mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: #1a1b22;
+  width: 100%;
+  height: 100vh;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+}
+
+.header__desktop-nav {
+  display: flex;
+}
+
+.header__close-button {
+  background: transparent no-repeat center;
+  background-size: contain;
+  width: 24px;
+  height: 24px;
+  border: none;
+  align-self: flex-end;
+  margin-bottom: 24px;
+  cursor: pointer;
+}
+
+.header_light {
+  color: #1a1b22;
+}
+
+.header_light .header__logo {
+  color: #1a1b22;
+}
+
+.header_light .navigation__link {
+  color: #1a1b22;
+}
+
+.header_light .navigation__link--active::after {
+  background-color: #1a1b22;
+}
+
+.header_light .navigation__button-loggedin {
+  color: #1a1b22;
+  border-color: #1a1b22;
+}
+
+.header_light .navigation__logout-icon {
+  filter: brightness(0); /* делает иконку чёрной */
+}
+
+@media screen and (max-width: 768px) {
+  .header__desktop-nav {
+    display: none;
+  }
+
+  .header__burger {
+    display: block;
+  }
+
+  .header__logo {
+    margin-left: 20px;
+  }
+
+  .header__title,
+  .header__subtitle {
+    width: 90%;
+    text-align: center;
+  }
+}

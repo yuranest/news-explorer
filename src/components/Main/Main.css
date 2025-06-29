@@ -1,0 +1,29 @@
+.results {
+  padding: 80px 104px;
+  background-color: #f5f6f7;
+}
+
+.results__title {
+  font-size: 40px;
+  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 64px;
+}
+
+.results__more-button {
+  display: block;
+  margin: 64px auto 0;
+  padding: 16px 56px;
+  font-size: 18px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  background-color: #ffffff;
+  border: 1px solid #1a1b22;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.results__more-button:hover {
+  background-color: #e8e8e8;
+}
