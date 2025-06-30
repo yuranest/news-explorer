@@ -19,19 +19,21 @@ function Header({ isLoggedIn, onLoginClick, onLogoutClick }) {
   return (
     <header className={`header ${!isHomePage ? 'header_light' : ''}`}>
       <div className={`header__top ${!isHomePage ? 'header__top_white' : ''}`}>
-        <h1 className="header__logo">NewsExplorer</h1>
+        <div className="header__container">
+          <h1 className="header__logo">NewsExplorer</h1>
 
-        <div className="header__burger" onClick={toggleMobileMenu}>
-          <span className="burger__icon" />
-        </div>
+          <div className="header__burger" onClick={toggleMobileMenu}>
+            <span className="burger__icon" />
+          </div>
 
-        <div className="header__desktop-nav">
-          <Navigation
-            isLoggedIn={isLoggedIn}
-            onLoginClick={onLoginClick}
-            onLogoutClick={onLogoutClick}
-            currentUser={currentUser}
-          />
+          <div className="header__desktop-nav">
+            <Navigation
+              isLoggedIn={isLoggedIn}
+              onLoginClick={onLoginClick}
+              onLogoutClick={onLogoutClick}
+              currentUser={currentUser}
+            />
+          </div>
         </div>
       </div>
 

@@ -27,11 +27,11 @@ export default function LoginModal({
       onClose={onClose}
       onSubmit={handleSubmit}
       isFormValid={isValid}
-      footerText="or Sign up"
+      footerText="Sign up"
       onFooterClick={onSwitchToRegister}
     >
-      <label className="modal__field">
-        Email
+      <>
+        <label className="modal__label">Email</label>
         <input
           type="email"
           name="email"
@@ -39,11 +39,11 @@ export default function LoginModal({
           value={values.email || ''}
           onChange={handleChange}
           required
+          placeholder="Enter your email"
         />
         <span className="modal__error">{errors.email}</span>
-      </label>
-      <label className="modal__field">
-        Password
+
+        <label className="modal__label">Password</label>
         <input
           type="password"
           name="password"
@@ -51,9 +51,10 @@ export default function LoginModal({
           value={values.password || ''}
           onChange={handleChange}
           required
+          placeholder="Enter your password"
         />
         <span className="modal__error">{errors.password}</span>
-      </label>
+      </>
     </ModalWithForm>
   );
 }

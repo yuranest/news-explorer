@@ -41,6 +41,7 @@ export default function ModalWithForm({
           </button>
           {footerText && (
             <p className="modal__footer">
+              or{' '}
               <span className="modal__link" onClick={onFooterClick}>
                 {footerText}
               </span>

@@ -9,12 +9,13 @@
   justify-content: center;
   align-items: center;
   z-index: 100;
+  font-family: 'Roboto', sans-serif;
 }
 
 .modal__container {
   background-color: white;
-  border-radius: 10px;
-  padding: 34px 36px;
+  border-radius: 20px;
+  padding: 34px 36px 28px;
   box-sizing: border-box;
   max-width: 430px;
   width: 100%;
@@ -39,8 +40,9 @@
 .modal__title {
   margin: 0 0 22px;
   font-size: 24px;
-  font-weight: 500;
+  font-weight: 900;
   line-height: 28px;
+  font-family: 'Roboto', sans-serif;
 }
 
 .modal__form {
@@ -51,30 +53,28 @@
 .modal__label {
   font-size: 12px;
   font-weight: 400;
-  margin-bottom: 8px;
-  color: #2f2f2f;
+  margin-bottom: 9px;
+  color: #2f71e5;
 }
 
 .modal__input {
   font-size: 14px;
-  padding: 8px 0;
+  padding: 10px 0;
   border: none;
   border-bottom: 1px solid #000;
-  margin-bottom: 18px;
   outline: none;
 }
 
 .modal__error {
   font-size: 12px;
   color: #f00;
-  height: 14px;
-  margin-top: -14px;
-  margin-bottom: 10px;
+  margin-top: 3px;
+  margin-bottom: 13px;
 }
 
 .modal__submit {
   margin-top: 18px;
-  padding: 13px 0;
+  padding: 26px 0;
   background-color: #2f71e5;
   color: white;
   font-size: 16px;
@@ -86,7 +86,7 @@
 }
 
 .modal__submit:hover {
-  background-color: #346ae0;
+  background-color: #2f71e5;
 }
 
 .modal__submit_disabled {
@@ -97,16 +97,29 @@
 
 .modal__footer {
   margin-top: 16px;
+  font-weight: 400;
   font-size: 14px;
-  color: #2f71e5;
   text-align: center;
 }
 
 .modal__link {
+  font-family: 'Inter', sans-serif;
   color: #2f71e5;
-  font-weight: 500;
+  font-weight: 400;
+  font-size: 14px;
   cursor: pointer;
 }
 .modal__link:hover {
   text-decoration: underline;
+}
+.modal__input::placeholder {
+  color: #b6bcbf;
+  font-size: 14px;
+}
+
+.modal__error_server {
+  color: #f00;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 10px;
 }

@@ -11,8 +11,6 @@ import SuccessModal from '../SuccessModal/SuccessModal';
 import SavedNews from '../SavedNews/SavedNews';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
-import './App.css';
-
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -128,6 +126,15 @@ function App() {
           onRegister={handleRegister}
           onSwitchToLogin={() => {
             setIsRegisterOpen(false);
+            setIsLoginOpen(true);
+          }}
+        />
+
+        <SuccessModal
+          isOpen={isSuccessOpen}
+          onClose={closeAllModals}
+          onSwitchToLogin={() => {
+            setIsSuccessOpen(false);
             setIsLoginOpen(true);
           }}
         />
