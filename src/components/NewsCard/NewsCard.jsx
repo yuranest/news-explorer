@@ -6,17 +6,36 @@ import bookmarkSavedIcon from '../../images/bookmark-saved.svg';
 import trashIcon from '../../images/trash.svg';
 import trashHoverIcon from '../../images/trash-hover.svg';
 
-function NewsCard({ card, isSavedSection }) {
+function NewsCard({
+  card,
+  isSavedSection,
+  isSaved = false,
+  isLoggedIn = false,
+  onSave,
+  onDelete,
+}) {
   const [isHovered, setIsHovered] = useState(false);
-  const isSaved = false; // TODO: update with real logic
 
-  function handleSaveClick() {
-    console.log('Save clicked:', card.title);
-  }
+  const formattedDate = new Date(card.publishedAt || card.date).toLocaleString(
+    'en-US',
+    {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric',
+    }
+  );
 
-  function handleDeleteClick() {
-    console.log('Delete clicked:', card.title);
-  }
+  const handleSaveClick = () => {
+    if (isSaved) {
+      onDelete?.(card);
+    } else {
+      onSave?.(card);
+    }
+  };
+
+  const handleDeleteClick = () => {
+    onDelete?.(card);
+  };
 
   return (
     <li className="card">
@@ -26,58 +45,63 @@ function NewsCard({ card, isSavedSection }) {
         target="_blank"
         rel="noreferrer"
       >
-        <img src={card.urlToImage} alt={card.title} className="card__image" />
+        <img
+          src={card.urlToImage || card.image}
+          alt={card.title}
+          className="card__image"
+        />
         <div className="card__content">
-          <p className="card__date">
-            {new Date(card.publishedAt).toLocaleDateString()}
-          </p>
+          <p className="card__date">{formattedDate}</p>
           <h3 className="card__title">{card.title}</h3>
-          <p className="card__text">{card.description}</p>
-          <p className="card__source">{card.source.name}</p>
+          <p className="card__text">{card.description || card.text}</p>
+          <p className="card__source">{card.source?.name || card.source}</p>
         </div>
       </a>
 
-      <div
-        className="card__icon-wrapper"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        {isSavedSection ? (
-          <>
-            {isHovered && (
+      <div className="card__icon-wrapper">
+        <div
+          className="card__icon-container"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          {isSavedSection ? (
+            <>
               <span className="card__tooltip">Remove from saved</span>
-            )}
-            <button
-              className="card__icon card__icon_type_trash"
-              onClick={handleDeleteClick}
-              aria-label="Delete article"
-            >
-              <img src={isHovered ? trashHoverIcon : trashIcon} alt="Delete" />
-            </button>
-          </>
-        ) : (
-          <>
-            {isHovered && (
-              <span className="card__tooltip">Sign in to save articles</span>
-            )}
-            <button
-              className="card__icon card__icon_type_bookmark"
-              onClick={handleSaveClick}
-              aria-label="Save article"
-            >
-              <img
-                src={
-                  isSaved
-                    ? bookmarkSavedIcon
-                    : isHovered
-                    ? bookmarkHoverIcon
-                    : bookmarkIcon
-                }
-                alt="Save"
-              />
-            </button>
-          </>
-        )}
+              <button
+                className="card__icon card__icon_type_trash"
+                onClick={handleDeleteClick}
+                aria-label="Delete article"
+              >
+                <img
+                  src={isHovered ? trashHoverIcon : trashIcon}
+                  alt="Delete"
+                />
+              </button>
+            </>
+          ) : (
+            <>
+              {!isLoggedIn && (
+                <span className="card__tooltip">Sign in to save articles</span>
+              )}
+              <button
+                className="card__icon card__icon_type_bookmark"
+                onClick={handleSaveClick}
+                aria-label="Save article"
+              >
+                <img
+                  src={
+                    isSaved
+                      ? bookmarkSavedIcon
+                      : isHovered
+                      ? bookmarkHoverIcon
+                      : bookmarkIcon
+                  }
+                  alt="Save"
+                />
+              </button>
+            </>
+          )}
+        </div>
       </div>
     </li>
   );

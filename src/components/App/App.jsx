@@ -10,14 +10,20 @@ import RegisterModal from '../RegisterModal/RegisterModal';
 import SuccessModal from '../SuccessModal/SuccessModal';
 import SavedNews from '../SavedNews/SavedNews';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import fetchNewsArticles from '../../utils/newsApi';
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [savedArticles, setSavedArticles] = useState([]);
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
   const [isSuccessOpen, setIsSuccessOpen] = useState(false);
+  const [articles, setArticles] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [searchError, setSearchError] = useState('');
+  const [visibleCount, setVisibleCount] = useState(3);
 
   const navigate = useNavigate();
 
@@ -29,9 +35,13 @@ function App() {
         .then((userData) => {
           setCurrentUser(userData);
           setIsLoggedIn(true);
+          return auth.getArticles(token);
+        })
+        .then((articles) => {
+          setSavedArticles(articles);
         })
         .catch((err) => {
-          console.error('Token verification failed:', err);
+          console.error('Init failed:', err);
           localStorage.removeItem('jwt');
         });
     }
@@ -90,6 +100,61 @@ function App() {
     navigate('/');
   }
 
+  function handleSaveArticle(article) {
+    const token = localStorage.getItem('jwt');
+    if (!token) {
+      setIsLoginOpen(true); // открыть модалку входа
+      return;
+    }
+
+    const savedData = {
+      keyword: article.keyword || 'General', // если реализована аналитика
+      title: article.title,
+      text: article.description || article.text,
+      date: article.publishedAt || new Date().toISOString(),
+      source: article.source?.name || article.source,
+      link: article.url,
+      image: article.urlToImage || article.image,
+    };
+
+    auth
+      .saveArticle(savedData, token)
+      .then((newArticle) => {
+        setSavedArticles((prev) => [...prev, newArticle]);
+      })
+      .catch((err) => {
+        console.error('Error saving article:', err);
+      });
+  }
+
+  function handleSearch(keyword) {
+    if (!keyword.trim()) {
+      setSearchError('Please enter a keyword');
+      setArticles([]);
+      return;
+    }
+
+    setIsLoading(true);
+    setSearchError('');
+    fetchNewsArticles(keyword)
+      .then((data) => {
+        if (!data.articles.length) {
+          setSearchError('Nothing Found');
+          setArticles([]);
+        } else {
+          setArticles(data.articles);
+          setVisibleCount(3);
+        }
+      })
+      .catch(() => {
+        setSearchError(
+          'Sorry, something went wrong during the request. Please try again later.'
+        );
+        setArticles([]);
+      })
+      .finally(() => setIsLoading(false));
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="app">
@@ -98,9 +163,25 @@ function App() {
           onRegisterClick={handleRegisterClick}
           onLogoutClick={handleLogout}
           isLoggedIn={isLoggedIn}
+          onSearch={handleSearch}
         />
         <Routes>
-          <Route path="/" element={<Main />} />
+          <Route
+            path="/"
+            element={
+              <Main
+                onSearch={handleSearch}
+                articles={articles.slice(0, visibleCount)}
+                isLoading={isLoading}
+                searchError={searchError}
+                showMoreVisible={visibleCount < articles.length}
+                onShowMore={() => setVisibleCount((c) => c + 3)}
+                onSaveArticle={handleSaveArticle}
+                isLoggedIn={isLoggedIn}
+                savedArticles={savedArticles}
+              />
+            }
+          />
           <Route
             path="/saved-news"
             element={

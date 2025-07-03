@@ -1,57 +1,52 @@
-import React, { useState } from 'react';
+import SearchForm from '../SearchForm/SearchForm';
+import Preloader from '../Preloader/Preloader';
 import NewsCardList from '../NewsCardList/NewsCardList';
-import About from '../About/About';
+import NotFound from '../NotFound/NotFound';
 
+import About from '../About/About';
 import './Main.css';
 
-const mockArticles = [
-  {
-    id: 1,
-    title: 'Nature makes you better',
-    description: 'Spending time in nature improves well-being...',
-    url: '#',
-    urlToImage: 'https://placehold.co/300x200',
-    source: { name: 'National Geographic' },
-    publishedAt: '2024-05-01',
-  },
-  {
-    id: 2,
-    title: 'The healing power of forests',
-    description: 'Scientists confirm what we always knew...',
-    url: '#',
-    urlToImage: 'https://placehold.co/300x200',
-    source: { name: 'Treehugger' },
-    publishedAt: '2024-06-10',
-  },
-  {
-    id: 3,
-    title: 'Green time vs. screen time',
-    description: 'Getting outdoors may be the best screen break...',
-    url: '#',
-    urlToImage: 'https://placehold.co/300x200',
-    source: { name: 'BBC Earth' },
-    publishedAt: '2024-06-20',
-  },
-];
-
-export default function Main() {
-  const [visibleCards, setVisibleCards] = useState(3);
-
-  const handleShowMore = () => {
-    setVisibleCards((prev) => prev + 3);
-  };
-
+export default function Main({
+  onSearch,
+  articles,
+  isLoading,
+  searchError,
+  showMoreVisible,
+  onShowMore,
+  onSaveArticle,
+  isLoggedIn,
+  savedArticles,
+}) {
   return (
     <main className="main">
-      <section className="results">
-        <h2 className="results__title">Search results</h2>
-        <NewsCardList cards={mockArticles.slice(0, visibleCards)} />
-        {visibleCards < mockArticles.length && (
-          <button className="results__more-button" onClick={handleShowMore}>
-            Show more
-          </button>
-        )}
-      </section>
+      {(isLoading || searchError || articles.length > 0) && (
+        <section className="results">
+          {isLoading && <Preloader />}
+
+          {!isLoading && searchError === 'Nothing Found' && <NotFound />}
+
+          {!isLoading && searchError && searchError !== 'Nothing Found' && (
+            <p className="results__error">{searchError}</p>
+          )}
+
+          {!isLoading && !searchError && articles.length > 0 && (
+            <>
+              <h2 className="results__title">Search results</h2>
+              <NewsCardList
+                cards={articles}
+                onSave={onSaveArticle}
+                isLoggedIn={isLoggedIn}
+                savedArticles={savedArticles}
+              />
+              {showMoreVisible && (
+                <button className="results__more-button" onClick={onShowMore}>
+                  Show more
+                </button>
+              )}
+            </>
+          )}
+        </section>
+      )}
       <About />
     </main>
   );

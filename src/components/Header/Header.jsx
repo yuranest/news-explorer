@@ -6,7 +6,7 @@ import closeIcon from '../../images/close-icon.png';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import './Header.css';
 
-function Header({ isLoggedIn, onLoginClick, onLogoutClick }) {
+function Header({ isLoggedIn, onLoginClick, onLogoutClick, onSearch }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const isHomePage = location.pathname === '/';
@@ -65,7 +65,7 @@ function Header({ isLoggedIn, onLoginClick, onLogoutClick }) {
             <br />
             account.
           </p>
-          <SearchForm />
+          <SearchForm onSearch={onSearch} />
         </div>
       )}
     </header>

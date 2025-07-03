@@ -6,7 +6,7 @@
 .saved-news-info__heading {
   font-size: 20px;
   font-weight: 400;
-  color: #1a1b22;
+  color: #1a1b2280;
   margin-bottom: 28px;
 }
 
@@ -21,4 +21,6 @@
   font-size: 18px;
   font-weight: 400;
   color: #1a1b22;
+  margin-bottom: 56px;
+  margin-top: 30px;
 }

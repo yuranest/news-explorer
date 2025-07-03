@@ -16,7 +16,7 @@
   font-size: 18px;
   font-weight: 500;
   background-color: #ffffff;
-  border: 1px solid #1a1b22;
+  border: none;
   border-radius: 100px;
   cursor: pointer;
   transition: background-color 0.3s ease;

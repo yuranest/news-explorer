@@ -3,15 +3,16 @@
   list-style: none;
   background-color: white;
   border-radius: 16px;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+  max-width: 400px;
+  max-height: 576px;
 }
 
 .card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-2px);
 }
 
 .card__link {
@@ -26,6 +27,8 @@
   width: 100%;
   height: 200px;
   object-fit: cover;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
 }
 
 .card__content {
@@ -33,66 +36,103 @@
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .card__date {
   font-size: 14px;
   color: #b6bcbf;
   margin-bottom: 12px;
+  font-family: 'Roboto Slab', serif;
 }
 
 .card__title {
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 700;
   color: #1a1b22;
   margin: 0 0 16px;
+  font-family: 'Inter', sans-serif;
 }
 
 .card__text {
   font-size: 16px;
   font-weight: 400;
   color: #1a1b22;
-  margin: 0 0 18px;
+  margin: 0 0 12px;
   flex-grow: 1;
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.4;
 }
 
 .card__source {
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 400;
   color: #b6bcbf;
   text-transform: uppercase;
+  font-family: 'Inter', sans-serif;
 }
 
-.card__icon {
+/* Обёртка иконки */
+.card__icon-wrapper {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  border: none;
+  top: 24px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  z-index: 2;
+}
+
+/* Контейнер для тултипа и иконки */
+.card__icon-container {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Иконка */
+.card__icon {
+  width: 40px;
+  height: 40px;
   background: none;
-  cursor: pointer;
+  border: none;
   padding: 0;
-  transition: opacity 0.2s;
+  cursor: pointer;
 }
 
 .card__icon img {
-  width: 24px;
-  height: 24px;
+  width: 100%;
+  height: 100%;
 }
 
 .card__icon:hover {
   opacity: 0.8;
 }
 
-.card__icon_type_trash img {
-  filter: invert(29%) sepia(6%) saturate(11%) hue-rotate(314deg) brightness(98%)
-    contrast(85%);
+/* Tooltip */
+.card__tooltip {
+  position: absolute;
+  right: 45px;
+  background-color: white;
+  color: black;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+  padding: 11px 20px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 5;
 }
 
-.card__icon_type_bookmark img {
-  transition: filter 0.2s;
-}
-
-.card__icon_type_bookmark:hover img {
-  filter: invert(0%) sepia(98%) saturate(7477%) hue-rotate(268deg)
-    brightness(91%) contrast(105%);
+/* Hover visibility */
+.card__icon-container:hover .card__tooltip {
+  opacity: 1;
+  pointer-events: auto;
 }
