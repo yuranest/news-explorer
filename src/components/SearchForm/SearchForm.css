@@ -9,17 +9,19 @@
   width: 608px;
   height: 64px;
   padding: 21px 208px 21px 24px;
-  border: none;
+  border: 1px #d1d2d6;
   border-radius: 100px;
   font-size: 18px;
   outline: none;
 }
 
+.search-form__input::placeholder {
+  color: #b6bcbf;
+}
+
 .search-form__button {
   position: absolute;
-  right: calc(50% - 320px + 16px);
-  top: 50%;
-  transform: translateY(-50%);
+  right: 0;
   height: 64px;
   width: 168px;
   background-color: #2f71e5;
@@ -27,7 +29,7 @@
   border: none;
   padding: 20px 56px;
   border-radius: 100px;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.3s ease;

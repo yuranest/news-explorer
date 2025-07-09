@@ -17,10 +17,19 @@
   content: '';
   position: absolute;
   bottom: -24px;
-  left: 0;
-  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
   height: 3px;
-  background-color: #ffffff;
+  background-color: currentColor;
+  width: 60px;
+}
+
+.navigation__link--home::after {
+  width: 68px;
+}
+
+.navigation__link--saved::after {
+  width: 178px;
 }
 
 .navigation__button {
@@ -40,14 +49,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 15px;
   background: transparent;
   border: 1px solid white;
   color: white;
   font-weight: 500;
   font-size: 18px;
   height: 48px;
-  padding: 0 20px;
+  width: 112px;
+  padding: 12px 15px 12px 19px;
   border-radius: 100px;
   cursor: pointer;
 }

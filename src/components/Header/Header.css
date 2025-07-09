@@ -12,7 +12,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30px 104px 13px;
+  padding: 19px 104px 13px;
   box-sizing: border-box;
 }
 
@@ -33,6 +33,10 @@
   margin: 0;
 }
 
+.header_light .header__logo {
+  color: #1a1b22;
+}
+
 .header__content {
   display: flex;
   flex-direction: column;
@@ -46,115 +50,13 @@
   margin-top: 80px;
   margin-bottom: 32px;
 }
+.header__title-tablet {
+  display: none;
+}
 
 .header__subtitle {
   font-size: 18px;
   font-weight: 400;
   width: 608px;
   margin-bottom: 88px;
-}
-
-.header__burger {
-  display: none;
-  cursor: pointer;
-  margin-right: 20px;
-}
-
-.burger__icon {
-  width: 24px;
-  height: 2px;
-  background-color: white;
-  display: block;
-  position: relative;
-}
-
-.burger__icon::before,
-.burger__icon::after {
-  content: '';
-  position: absolute;
-  width: 24px;
-  height: 2px;
-  background-color: white;
-  left: 0;
-}
-
-.burger__icon::before {
-  top: -8px;
-}
-
-.burger__icon::after {
-  top: 8px;
-}
-
-.header__mobile-menu {
-  position: fixed;
-  top: 0;
-  right: 0;
-  background-color: #1a1b22;
-  width: 100%;
-  height: 100vh;
-  z-index: 100;
-  display: flex;
-  flex-direction: column;
-  padding: 32px;
-}
-
-.header__desktop-nav {
-  display: flex;
-}
-
-.header__close-button {
-  background: transparent no-repeat center;
-  background-size: contain;
-  width: 24px;
-  height: 24px;
-  border: none;
-  align-self: flex-end;
-  margin-bottom: 24px;
-  cursor: pointer;
-}
-
-.header_light {
-  color: #1a1b22;
-}
-
-.header_light .header__logo {
-  color: #1a1b22;
-}
-
-.header_light .navigation__link {
-  color: #1a1b22;
-}
-
-.header_light .navigation__link--active::after {
-  background-color: #1a1b22;
-}
-
-.header_light .navigation__button-loggedin {
-  color: #1a1b22;
-  border-color: #1a1b22;
-}
-
-.header_light .navigation__logout-icon {
-  filter: brightness(0);
-}
-
-@media screen and (max-width: 768px) {
-  .header__container {
-    padding: 30px 20px 13px;
-  }
-
-  .header__desktop-nav {
-    display: none;
-  }
-
-  .header__burger {
-    display: block;
-  }
-
-  .header__title,
-  .header__subtitle {
-    width: 90%;
-    text-align: center;
-  }
 }

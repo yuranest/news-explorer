@@ -11,6 +11,7 @@ import SuccessModal from '../SuccessModal/SuccessModal';
 import SavedNews from '../SavedNews/SavedNews';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import fetchNewsArticles from '../../utils/newsApi';
+import '../../styles/media.css';
 
 function App() {
   const [savedArticles, setSavedArticles] = useState([]);

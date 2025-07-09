@@ -5,19 +5,31 @@ import './Navigation.css';
 
 function Navigation({ isLoggedIn, onLoginClick, onLogoutClick, currentUser }) {
   const location = useLocation();
-  const isSavedNews = location.pathname === '/saved-news';
-
-  const linkClass = ({ isActive }) =>
-    `navigation__link${isActive ? ' navigation__link--active' : ''}`;
 
   return (
     <nav className="navigation">
-      <NavLink to="/" className={linkClass}>
+      <NavLink
+        to="/"
+        className={({ isActive }) =>
+          `navigation__link${
+            isActive ? ' navigation__link--active navigation__link--home' : ''
+          }`
+        }
+      >
         Home
       </NavLink>
 
       {isLoggedIn && (
-        <NavLink to="/saved-news" className={linkClass}>
+        <NavLink
+          to="/saved-news"
+          className={({ isActive }) =>
+            `navigation__link${
+              isActive
+                ? ' navigation__link--active navigation__link--saved'
+                : ''
+            }`
+          }
+        >
           Saved articles
         </NavLink>
       )}

@@ -56,13 +56,19 @@ function Header({ isLoggedIn, onLoginClick, onLogoutClick, onSearch }) {
 
       {isHomePage && (
         <div className="header__content">
-          <h2 className="header__title">
-            What’s going on in
-            <br /> the world?
-          </h2>
+          <>
+            <h2 className="header__title header__title-desktop">
+              What’s going on in
+              <br />
+              the world?
+            </h2>
+            <h2 className="header__title header__title-tablet">
+              What’s going on in the <br />
+              world?
+            </h2>
+          </>
           <p className="header__subtitle">
             Find the latest news on any topic and save them in your personal
-            <br />
             account.
           </p>
           <SearchForm onSearch={onSearch} />
