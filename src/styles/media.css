@@ -129,6 +129,73 @@
     display: flex;
     gap: 24px;
   }
+
+  .cards {
+    padding: 40px;
+  }
+
+  .card-list {
+    display: grid;
+    grid-template-columns: repeat(3, 224px);
+    gap: 8px;
+    justify-content: center;
+  }
+  .results {
+    padding: 40px;
+  }
+
+  .results__title {
+    font-size: 30px;
+    margin-bottom: 32px;
+  }
+
+  .results__more-button {
+    margin: 32px auto 0;
+    padding: 16px 56px;
+    font-size: 18px;
+  }
+  .card {
+    max-width: 224px;
+    max-height: none;
+  }
+
+  .card__image {
+    height: 150px;
+  }
+
+  .card__content {
+    padding: 16px;
+  }
+
+  .card__date {
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+
+  .card__title {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .card__text {
+    font-size: 14px;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+
+  .card__source {
+    font-size: 12px;
+  }
+
+  .card__icon-wrapper {
+    top: 16px;
+    right: 16px;
+  }
+
+  .card__tooltip {
+    font-size: 10px;
+    padding: 8px 12px;
+  }
 }
 /* ========== 480px / 320px BREAKPOINT ========== */
 
