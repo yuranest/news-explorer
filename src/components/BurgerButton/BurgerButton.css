@@ -1,0 +1,12 @@
+.burger-button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: none;
+}
+
+.burger-button__icon {
+  width: 24px;
+  height: 24px;
+}

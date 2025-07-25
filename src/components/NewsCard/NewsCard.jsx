@@ -39,6 +39,10 @@ function NewsCard({
 
   return (
     <li className="card">
+      {isSavedSection && card.keyword && (
+        <span className="card__keyword">{card.keyword}</span>
+      )}
+
       <a
         className="card__link"
         href={card.url}

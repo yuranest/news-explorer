@@ -1,10 +1,10 @@
 const BASE_URL = 'http://localhost:3001';
 
 function checkResponse(res) {
-  return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
+  return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
 }
 
-// Регистрация пользователя
+// Register a new user
 export function register({ name, email, password }) {
   return fetch(`${BASE_URL}/signup`, {
     method: 'POST',
@@ -13,7 +13,7 @@ export function register({ name, email, password }) {
   }).then(checkResponse);
 }
 
-// Авторизация пользователя
+// Authorize user
 export function login({ email, password }) {
   return fetch(`${BASE_URL}/signin`, {
     method: 'POST',
@@ -22,7 +22,7 @@ export function login({ email, password }) {
   }).then(checkResponse);
 }
 
-// Получение данных текущего пользователя
+// Get current user info
 export function getUserInfo(token) {
   return fetch(`${BASE_URL}/users/me`, {
     method: 'GET',
@@ -32,7 +32,7 @@ export function getUserInfo(token) {
   }).then(checkResponse);
 }
 
-// Получить сохранённые статьи
+// Get saved articles
 export function getArticles(token) {
   return fetch(`${BASE_URL}/articles`, {
     method: 'GET',
@@ -42,7 +42,7 @@ export function getArticles(token) {
   }).then(checkResponse);
 }
 
-// Сохранить статью
+// Save a new article
 export function saveArticle(article, token) {
   return fetch(`${BASE_URL}/articles`, {
     method: 'POST',
@@ -54,7 +54,7 @@ export function saveArticle(article, token) {
   }).then(checkResponse);
 }
 
-// Удалить статью
+// Delete an article
 export function deleteArticle(articleId, token) {
   return fetch(`${BASE_URL}/articles/${articleId}`, {
     method: 'DELETE',

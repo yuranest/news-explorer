@@ -200,41 +200,42 @@
 /* ========== 480px / 320px BREAKPOINT ========== */
 
 @media screen and (max-width: 480px) {
+  .burger-button {
+    display: flex;
+  }
   .header__container {
-    padding: 30px 20px 13px;
+    padding: 16px;
+  }
+  .header__logo {
+    width: 117px;
+    font-size: 16px;
   }
 
-  .header__desktop-nav {
+  .navigation__link {
     display: none;
   }
 
-  .header__title,
-  .header__subtitle {
-    width: 90%;
-    text-align: center;
+  .navigation__button {
+    display: none;
   }
-  .header__burger {
+  .header__title-tablet {
+    display: none;
+  }
+  .header__title-desktop {
     display: block;
+    width: 285px;
+    font-size: 36px;
+    margin-top: 30px;
+    margin-bottom: 16px;
   }
 
-  .footer {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-    padding: 20px;
+  .header__subtitle {
+    width: 452px;
+    margin-bottom: 48px;
+    text-align: left;
   }
 
-  .footer__nav-block {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-  }
-
-  .footer__links {
-    flex-direction: column;
-  }
-
-  .footer__socials {
-    flex-direction: row;
+  .header__content {
+    margin: 19px;
   }
 }

@@ -11,7 +11,6 @@ import SuccessModal from '../SuccessModal/SuccessModal';
 import SavedNews from '../SavedNews/SavedNews';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import fetchNewsArticles from '../../utils/newsApi';
-import '../../styles/media.css';
 
 function App() {
   const [savedArticles, setSavedArticles] = useState([]);
@@ -25,6 +24,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [searchError, setSearchError] = useState('');
   const [visibleCount, setVisibleCount] = useState(3);
+  const [searchKeyword, setSearchKeyword] = useState('');
 
   const navigate = useNavigate();
 
@@ -104,12 +104,12 @@ function App() {
   function handleSaveArticle(article) {
     const token = localStorage.getItem('jwt');
     if (!token) {
-      setIsLoginOpen(true); // открыть модалку входа
+      setIsLoginOpen(true);
       return;
     }
 
     const savedData = {
-      keyword: article.keyword || 'General', // если реализована аналитика
+      keyword: searchKeyword, // ← вот теперь всегда актуальный keyword
       title: article.title,
       text: article.description || article.text,
       date: article.publishedAt || new Date().toISOString(),
@@ -135,6 +135,8 @@ function App() {
       return;
     }
 
+    setSearchKeyword(keyword);
+
     setIsLoading(true);
     setSearchError('');
     fetchNewsArticles(keyword)
@@ -143,7 +145,11 @@ function App() {
           setSearchError('Nothing Found');
           setArticles([]);
         } else {
-          setArticles(data.articles);
+          const sortedArticles = data.articles.sort(
+            (a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)
+          );
+
+          setArticles(sortedArticles);
           setVisibleCount(3);
         }
       })

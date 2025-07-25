@@ -2,8 +2,8 @@ import React, { useState, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import Navigation from '../Navigation/Navigation';
 import SearchForm from '../SearchForm/SearchForm';
-import closeIcon from '../../images/close-icon.png';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
+import BurgerButton from '../BurgerButton/BurgerButton';
 import './Header.css';
 
 function Header({ isLoggedIn, onLoginClick, onLogoutClick, onSearch }) {
@@ -21,30 +21,27 @@ function Header({ isLoggedIn, onLoginClick, onLogoutClick, onSearch }) {
       <div className={`header__top ${!isHomePage ? 'header__top_white' : ''}`}>
         <div className="header__container">
           <h1 className="header__logo">NewsExplorer</h1>
-
-          <div className="header__burger" onClick={toggleMobileMenu}>
-            <span className="burger__icon" />
-          </div>
-
           <div className="header__desktop-nav">
             <Navigation
               isLoggedIn={isLoggedIn}
-              onLoginClick={onLoginClick}
+              onLoginClick={() => {
+                setIsMobileMenuOpen(false);
+                onLoginClick();
+              }}
               onLogoutClick={onLogoutClick}
               currentUser={currentUser}
             />
           </div>
+          <BurgerButton
+            isOpen={isMobileMenuOpen}
+            onClick={toggleMobileMenu}
+            isDark={!isHomePage}
+          />
         </div>
       </div>
 
       {isMobileMenuOpen && (
         <div className="header__mobile-menu">
-          <button
-            className="header__close-button"
-            onClick={() => setIsMobileMenuOpen(false)}
-            style={{ backgroundImage: `url(${closeIcon})` }}
-            aria-label="Close"
-          />
           <Navigation
             isLoggedIn={isLoggedIn}
             onLoginClick={onLoginClick}
@@ -56,7 +53,7 @@ function Header({ isLoggedIn, onLoginClick, onLogoutClick, onSearch }) {
 
       {isHomePage && (
         <div className="header__content">
-          <>
+          <div>
             <h2 className="header__title header__title-desktop">
               What’s going on in
               <br />
@@ -66,7 +63,7 @@ function Header({ isLoggedIn, onLoginClick, onLogoutClick, onSearch }) {
               What’s going on in the <br />
               world?
             </h2>
-          </>
+          </div>
           <p className="header__subtitle">
             Find the latest news on any topic and save them in your personal
             account.

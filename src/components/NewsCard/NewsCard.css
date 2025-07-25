@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400&display=swap');
+
 .card {
   position: relative;
   list-style: none;
@@ -31,6 +33,22 @@
   border-top-right-radius: 16px;
 }
 
+.card__keyword {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background-color: #ffffff;
+  color: #000000;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 20px;
+  border-radius: 10px;
+  z-index: 3;
+  line-height: 24px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 .card__content {
   padding: 20px;
   flex-grow: 1;
@@ -40,18 +58,18 @@
 }
 
 .card__date {
-  font-size: 14px;
+  font-weight: 400;
+  font-size: 18px;
   color: #b6bcbf;
   margin-bottom: 12px;
-  font-family: 'Roboto Slab', serif;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 .card__title {
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 26px;
+  font-weight: 400;
   color: #1a1b22;
   margin: 0 0 16px;
-  font-family: 'Inter', sans-serif;
 }
 
 .card__text {
@@ -61,15 +79,13 @@
   margin: 0 0 12px;
   flex-grow: 1;
   font-family: 'Roboto', sans-serif;
-  line-height: 1.4;
 }
 
 .card__source {
-  font-size: 14px;
-  font-weight: 400;
+  font-size: 16px;
+  font-weight: 700;
   color: #b6bcbf;
   text-transform: uppercase;
-  font-family: 'Inter', sans-serif;
 }
 
 .card__icon-wrapper {
