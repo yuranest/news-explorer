@@ -41,22 +41,27 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
+  margin: 0 auto;
+  padding: 0;
+  text-align: start;
 }
-
+.header__content-wrapper {
+  margin: 0 auto;
+}
 .header__title {
   font-weight: 400;
   font-size: 60px;
-  width: 608px;
+  max-width: 608px;
+  width: 100%;
   margin-top: 80px;
   margin-bottom: 32px;
-}
-.header__title-tablet {
-  display: none;
 }
 
 .header__subtitle {
   font-size: 18px;
   font-weight: 400;
-  width: 608px;
+  max-width: 608px;
+  width: 100%;
   margin-bottom: 88px;
 }

@@ -10,27 +10,15 @@
     height: 24px;
   }
 
-  .header__content {
-    margin-left: 160px;
-    margin-right: 156px;
-    align-items: flex-start;
-  }
-
-  .header__title-desktop {
-    display: none;
-  }
-
-  .header__title-tablet {
-    display: block;
-    width: 385px;
+  .header__title {
+    width: 100%;
+    max-width: 385px;
     font-size: 36px;
-    line-height: 40px;
-    margin-top: 30px;
-    margin-bottom: 16px;
   }
 
   .header__subtitle {
-    width: 452px;
+    width: 100%;
+    max-width: 452px;
     margin-bottom: 48px;
     text-align: left;
   }
@@ -67,14 +55,9 @@
   .navigation__link--active::after {
     bottom: -24px;
   }
-  .search-form {
-    width: 448px;
-    height: 56px;
-  }
 
   .search-form__button {
     width: 160px;
-    right: -10px;
     padding: 16px 52px;
   }
   .search-form__input {
@@ -199,16 +182,14 @@
 }
 /* ========== 480px / 320px BREAKPOINT ========== */
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 425px) {
+  body {
+    display: block;
+    padding: 0;
+  }
+
   .burger-button {
     display: flex;
-  }
-  .header__container {
-    padding: 16px;
-  }
-  .header__logo {
-    width: 117px;
-    font-size: 16px;
   }
 
   .navigation__link {
@@ -218,24 +199,36 @@
   .navigation__button {
     display: none;
   }
-  .header__title-tablet {
-    display: none;
+
+  .header__logo {
+    width: 117px;
+    font-size: 16px;
   }
-  .header__title-desktop {
-    display: block;
-    width: 285px;
+
+  .header__title {
+    width: 100%;
+    max-width: 285px;
     font-size: 36px;
     margin-top: 30px;
     margin-bottom: 16px;
   }
-
   .header__subtitle {
-    width: 452px;
-    margin-bottom: 48px;
-    text-align: left;
+    width: 100%;
+    max-width: 288px;
+    margin-bottom: 122px;
   }
 
-  .header__content {
-    margin: 19px;
+  .search-form {
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .search-form__input,
+  .search-form__button {
+    position: static;
+    width: 100%;
+    max-width: 288px;
+    text-align: center;
   }
 }
