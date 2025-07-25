@@ -1,4 +1,5 @@
-import React, { useState, useContext } from 'react';
+import { NavLink } from 'react-router-dom';
+import React, { useState, useContext, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Navigation from '../Navigation/Navigation';
 import SearchForm from '../SearchForm/SearchForm';
@@ -11,6 +12,21 @@ function Header({ isLoggedIn, onLoginClick, onLogoutClick, onSearch }) {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
   const currentUser = useContext(CurrentUserContext);
+
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? 'hidden' : '';
+  }, [isMobileMenuOpen]);
+
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth > 768 && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
+    }
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [isMobileMenuOpen]);
 
   function toggleMobileMenu() {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -41,13 +57,34 @@ function Header({ isLoggedIn, onLoginClick, onLogoutClick, onSearch }) {
       </div>
 
       {isMobileMenuOpen && (
-        <div className="header__mobile-menu">
-          <Navigation
-            isLoggedIn={isLoggedIn}
-            onLoginClick={onLoginClick}
-            onLogoutClick={onLogoutClick}
-            currentUser={currentUser}
-          />
+        <div className="burger-menu-overlay">
+          <div className="burger-menu">
+            <div className="burger-menu__top">
+              <h1 className="burger-menu__logo">NewsExplorer</h1>
+              <button
+                className="burger-menu__close"
+                onClick={toggleMobileMenu}
+              />
+            </div>
+            <nav className="burger-menu__nav">
+              <NavLink
+                to="/"
+                className="burger-menu__link"
+                onClick={toggleMobileMenu}
+              >
+                Home
+              </NavLink>
+              <button
+                className="burger-menu__signin"
+                onClick={() => {
+                  toggleMobileMenu();
+                  onLoginClick();
+                }}
+              >
+                Sign in
+              </button>
+            </nav>
+          </div>
         </div>
       )}
 

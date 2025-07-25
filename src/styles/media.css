@@ -308,4 +308,115 @@
     color: #b6bcbf;
     text-align: left;
   }
+
+  .burger-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    background-color: rgba(26, 27, 34, 0.95);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    border-radius: 10px;
+  }
+
+  .burger-menu {
+    width: 320px;
+    height: 230px;
+    background-color: #1a1b22;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 16px;
+    box-sizing: border-box;
+    color: white;
+    border-radius: 10px;
+  }
+
+  .burger-menu__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .burger-menu__logo {
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+  }
+
+  .burger-menu__close {
+    background: transparent;
+    border: none;
+    width: 24px;
+    height: 24px;
+    background-image: url('/src/images/close-icon.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    color: white;
+  }
+
+  .burger-menu__nav {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .burger-menu__link {
+    font-weight: 500;
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+  }
+
+  .burger-menu__signin {
+    font-size: 18px;
+    padding: 12px;
+    border: 1px solid white;
+    background-color: transparent;
+    color: white;
+    border-radius: 24px;
+    cursor: pointer;
+  }
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 56px;
+    z-index: 20;
+  }
+
+  .modal__container {
+    width: 100%;
+    max-width: 320px;
+    max-height: 560px;
+    background-color: #fff;
+    border-radius: 16px 16px 0 0;
+    box-sizing: border-box;
+    padding: 20px 16px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 auto;
+  }
+
+  .modal__close-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .modal__close-button {
+    position: absolute;
+    top: -30px;
+    right: 6px;
+  }
 }
