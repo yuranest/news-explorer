@@ -1,12 +1,57 @@
-# React + Vite
+# Обновим README.md с финальной версией содержимого
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+final_readme = """\
 
-Currently, two official plugins are available:
+# 🗞️ News Explorer — Final Project (Stage 1)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+News Explorer is a React + Vite application that allows users to search for news articles via the NewsAPI.org service. This is Stage 1 of the final project, covering JSX markup, component structure, and NewsAPI integration.
 
-## Expanding the ESLint configuration
+## 🌐 Live Demo
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+[👉 View the deployed site here](https://yuranest.github.io/news-explorer)
+
+---
+
+## 🔧 Project Structure
+
+- **React + Vite** project using functional components and hooks
+- Fully responsive layout from 320px+
+- Semantic JSX with proper BEM class naming
+- Components:
+  - `SearchForm` — input for topic search
+  - `Preloader` — loading spinner
+  - `NewsCardList` + `NewsCard` — article list with “Show more”
+  - `LoginModal`, `RegisterModal`, `SuccessModal` — authentication modals
+  - `ProtectedRoute` — secure routing logic
+- Connected to **NewsAPI.org** with fetch logic in `utils/newsApi.js`
+
+---
+
+## ✅ Features Implemented
+
+- Search for articles over the past 7 days
+- Shows 3 articles at a time with “Show more” button
+- Preloader during API call
+- “Nothing found” message for empty results
+- Modal popup logic working (Sign In, Sign Up, Success)
+- Layout matches the Figma design (Stage 1 spec)
+
+---
+
+## 🗂 Tech Stack
+
+- React 18 + Vite
+- Vanilla CSS (modularized)
+- NewsAPI.org
+- React Router v6
+
+---
+
+## 🚀 How to Run Locally
+
+```bash
+git clone https://github.com/yuranest/news-explorer.git
+cd news-explorer
+npm install
+npm run dev
+```
