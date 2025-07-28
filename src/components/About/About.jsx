@@ -7,18 +7,20 @@ function About() {
     <section className="about">
       <img
         src={authorImage}
-        alt="Photo of Yuriy, author of the site"
+        alt="Yuriy Nesterenko, author of the project"
         className="about__image"
       />
       <div className="about__text">
         <h2 className="about__title">About the author</h2>
         <p className="about__description">
-          This block describes the project author. Here you should indicate your
-          name, what you do, and which development technologies you know.
+          My name is Yuriy. I'm a web developer with a passion for clean design,
+          user-focused interfaces, and modern JavaScript technologies like React
+          and Vite.
         </p>
         <p className="about__description">
-          You can also talk about your experience with TripleTen, what you
-          learned there, and how you can help potential customers.
+          This project is a part of my final work at the TripleTen Bootcamp. It
+          demonstrates layout building, component structure in React, and
+          third-party API integration using NewsAPI.
         </p>
       </div>
     </section>
