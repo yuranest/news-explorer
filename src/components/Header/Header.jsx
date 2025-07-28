@@ -7,15 +7,22 @@ import CurrentUserContext from '../../contexts/CurrentUserContext';
 import BurgerButton from '../BurgerButton/BurgerButton';
 import './Header.css';
 
-function Header({ isLoggedIn, onLoginClick, onLogoutClick, onSearch }) {
+function Header({
+  isLoggedIn,
+  onLoginClick,
+  onLogoutClick,
+  onSearch,
+  isModalOpen,
+}) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const isHomePage = location.pathname === '/';
   const currentUser = useContext(CurrentUserContext);
 
   useEffect(() => {
-    document.body.style.overflow = isMobileMenuOpen ? 'hidden' : '';
-  }, [isMobileMenuOpen]);
+    const block = isMobileMenuOpen || isModalOpen;
+    document.body.style.overflow = block ? 'hidden' : '';
+  }, [isMobileMenuOpen, isModalOpen]);
 
   useEffect(() => {
     function handleResize() {
@@ -48,11 +55,13 @@ function Header({ isLoggedIn, onLoginClick, onLogoutClick, onSearch }) {
               currentUser={currentUser}
             />
           </div>
-          <BurgerButton
-            isOpen={isMobileMenuOpen}
-            onClick={toggleMobileMenu}
-            isDark={!isHomePage}
-          />
+          {!isModalOpen && (
+            <BurgerButton
+              isOpen={isMobileMenuOpen}
+              onClick={toggleMobileMenu}
+              isDark={!isHomePage}
+            />
+          )}
         </div>
       </div>
 

@@ -26,6 +26,8 @@ function App() {
   const [visibleCount, setVisibleCount] = useState(3);
   const [searchKeyword, setSearchKeyword] = useState('');
 
+  const isAnyModalOpen = isLoginOpen || isRegisterOpen || isSuccessOpen;
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -171,6 +173,7 @@ function App() {
           onLogoutClick={handleLogout}
           isLoggedIn={isLoggedIn}
           onSearch={handleSearch}
+          isModalOpen={isAnyModalOpen}
         />
         <Routes>
           <Route

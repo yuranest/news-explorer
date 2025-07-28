@@ -199,6 +199,9 @@
   .navigation__button {
     display: none;
   }
+  .header__container {
+    padding: 24px 20px 24px 16px;
+  }
 
   .header__logo {
     width: 117px;
@@ -359,13 +362,14 @@
   }
 
   .burger-menu__nav {
-    margin-top: 40px;
+    margin-top: 22px;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 40px;
   }
 
   .burger-menu__link {
+    font-family: 'Roboto', sans-serif;
     font-weight: 500;
     font-size: 18px;
     color: white;
