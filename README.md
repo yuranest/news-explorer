@@ -51,3 +51,5 @@ cd news-explorer
 npm install
 npm run dev
 ```
+
+<!-- TEMP CHANGE FOR PR -->
