@@ -1,7 +1,3 @@
-# Обновим README.md с финальной версией содержимого
-
-final_readme = """\
-
 # 🗞️ News Explorer — Final Project (Stage 1)
 
 News Explorer is a React + Vite application that allows users to search for news articles via the NewsAPI.org service. This is Stage 1 of the final project, covering JSX markup, component structure, and NewsAPI integration.
