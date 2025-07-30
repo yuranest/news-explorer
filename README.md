@@ -4,7 +4,7 @@ News Explorer is a React + Vite application that allows users to search for news
 
 ## 🌐 Live Demo
 
-[👉 View the deployed site here](https://yuranest.github.io/news-explorer)
+[👉 View the deployed site here](https://yuranest.github.io)
 
 ---
 
