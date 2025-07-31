@@ -12,7 +12,12 @@ export default function Footer() {
           <Link to="/" className="footer__link">
             Home
           </Link>
-          <a href="https://tripleten.com" className="footer__link">
+          <a
+            href="https://tripleten.com"
+            className="footer__link"
+            target="_blank"
+            rel="noreferrer"
+          >
             TripleTen
           </a>
         </div>

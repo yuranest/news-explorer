@@ -59,6 +59,7 @@
 }
 
 .header__subtitle {
+  font-family: 'Roboto', sans-serif;
   font-size: 18px;
   font-weight: 400;
   max-width: 608px;

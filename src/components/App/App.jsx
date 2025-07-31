@@ -116,7 +116,7 @@ function App() {
     }
 
     const savedData = {
-      keyword: searchKeyword, // ← вот теперь всегда актуальный keyword
+      keyword: searchKeyword,
       title: article.title,
       text: article.description || article.text,
       date: article.publishedAt || new Date().toISOString(),
