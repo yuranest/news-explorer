@@ -13,8 +13,8 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import fetchNewsArticles from '../../utils/newsApi';
 
 function App() {
+  const [isAppInitialized, setIsAppInitialized] = useState(false);
   const [savedArticles, setSavedArticles] = useState([]);
-
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
@@ -46,7 +46,12 @@ function App() {
         .catch((err) => {
           console.error('Init failed:', err);
           localStorage.removeItem('jwt');
+        })
+        .finally(() => {
+          setIsAppInitialized(true);
         });
+    } else {
+      setIsAppInitialized(true);
     }
   }, []);
 
@@ -163,6 +168,7 @@ function App() {
       })
       .finally(() => setIsLoading(false));
   }
+  if (!isAppInitialized) return null;
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -195,7 +201,10 @@ function App() {
           <Route
             path="/saved-news"
             element={
-              <ProtectedRoute isLoggedIn={isLoggedIn}>
+              <ProtectedRoute
+                isLoggedIn={isLoggedIn}
+                isAppInitialized={isAppInitialized}
+              >
                 <SavedNews />
               </ProtectedRoute>
             }

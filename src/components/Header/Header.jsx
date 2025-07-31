@@ -16,7 +16,7 @@ function Header({
 }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
-  const isHomePage = location.pathname === '/';
+  const isHomePage = location.pathname.endsWith('/');
   const currentUser = useContext(CurrentUserContext);
 
   useEffect(() => {
