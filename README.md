@@ -4,7 +4,16 @@ News Explorer is a React + Vite application that allows users to search for news
 
 ## 🌐 Live Demo
 
-[👉 View the deployed site here](https://yuranest.github.io)
+[👉 View the deployed site here](https://yuranest.github.io/news-explorer/)
+
+## 🔐 Demo Login (for Reviewers)
+
+You can use the following test account:
+
+📧 **Email**: `test@mail.com`  
+🔒 **Password**: `123123`
+
+✅ This account already contains saved articles so you can test the `/saved-news` route.
 
 ---
 
