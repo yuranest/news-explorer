@@ -83,14 +83,24 @@ function Header({
               >
                 Home
               </NavLink>
+
+              {isLoggedIn && (
+                <NavLink
+                  to="/saved-news"
+                  className="burger-menu__link"
+                  onClick={toggleMobileMenu}
+                >
+                  Saved articles
+                </NavLink>
+              )}
               <button
                 className="burger-menu__signin"
                 onClick={() => {
                   toggleMobileMenu();
-                  onLoginClick();
+                  isLoggedIn ? onLogoutClick() : onLoginClick();
                 }}
               >
-                Sign in
+                {isLoggedIn ? 'Log out' : 'Sign in'}
               </button>
             </nav>
           </div>

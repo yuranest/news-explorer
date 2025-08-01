@@ -1,11 +1,20 @@
-.cards {
-  padding: 80px 104px;
+.card-list-wrapper {
+  background-color: #f5f6f7;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  box-sizing: border-box;
+  padding: 62px 0;
 }
 
 .card-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
+  grid-template-columns: repeat(auto-fill, 400px);
+  gap: 16px;
   justify-content: center;
-
-  gap: 24px;
+  max-width: calc(3 * 400px + 2 * 16px);
+  margin: 0 auto;
 }

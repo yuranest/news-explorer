@@ -11,26 +11,28 @@ export default function NewsCardList({
   savedArticles = [],
 }) {
   return (
-    <ul className="card-list">
-      {cards.map((card) => {
-        const isSaved = savedArticles.some(
-          (a) =>
-            a.title === card.title &&
-            (a.source === card.source?.name || a.source === card.source)
-        );
+    <div className="card-list-wrapper">
+      <ul className="card-list">
+        {cards.map((card) => {
+          const isSaved = savedArticles.some(
+            (a) =>
+              a.title === card.title &&
+              (a.source === card.source?.name || a.source === card.source)
+          );
 
-        return (
-          <NewsCard
-            key={card._id || `${card.title}-${card.publishedAt}`}
-            card={card}
-            isSavedSection={isSavedSection}
-            isLoggedIn={isLoggedIn}
-            onSave={onSave}
-            onDelete={onDelete}
-            isSaved={isSaved}
-          />
-        );
-      })}
-    </ul>
+          return (
+            <NewsCard
+              key={card._id || `${card.title}-${card.publishedAt}`}
+              card={card}
+              isSavedSection={isSavedSection}
+              isLoggedIn={isLoggedIn}
+              onSave={onSave}
+              onDelete={onDelete}
+              isSaved={isSaved}
+            />
+          );
+        })}
+      </ul>
+    </div>
   );
 }

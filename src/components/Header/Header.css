@@ -23,6 +23,11 @@
   box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.2);
 }
 
+.header_light .header__top {
+  border-bottom: 1px solid #d1d2d6;
+  box-shadow: none;
+}
+
 .header__top_white {
   background-color: white;
 }

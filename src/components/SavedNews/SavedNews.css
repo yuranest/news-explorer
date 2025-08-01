@@ -1,13 +1,20 @@
 .saved-news-page {
-  padding: 24px 40px;
-  background-color: #f5f6f7;
+  background-color: #fff;
+}
+
+.saved-news-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 104px;
 }
 
 .saved-news-info__heading {
-  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
   font-weight: 400;
   color: #1a1b2280;
   margin-bottom: 28px;
+  margin-top: 40px;
 }
 
 .saved-news-info__title {
@@ -18,6 +25,7 @@
 }
 
 .saved-news-info__keywords {
+  font-family: 'Roboto', sans-serif;
   font-size: 18px;
   font-weight: 400;
   color: #1a1b22;
