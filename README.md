@@ -1,54 +1,66 @@
-# 🗞️ News Explorer — Final Project (Stage 1)
+# 🗞️ News Explorer — Final Project
 
-News Explorer is a React + Vite application that allows users to search for news articles via the NewsAPI.org service. This is Stage 1 of the final project, covering JSX markup, component structure, and NewsAPI integration.
+News Explorer is a React + Vite application that allows users to search for news articles via the NewsAPI.org service and save them to a personal collection. This is the final version of the full-stack app, deployed to production.
 
-## 🌐 Live Demo
+## 🌐 Live
 
-[👉 View the deployed site here](https://yuranest.github.io/news-explorer/)
+👉 [Visit the deployed site](https://news.ugo.si)
 
-## 🔐 Demo Login (for Reviewers)
+## 🔐 Demo Login
 
-You can use the following test account:
+You can use the following test account to log in and explore saved articles:
 
 📧 **Email**: `test@mail.com`  
 🔒 **Password**: `123123`
 
-✅ This account already contains saved articles so you can test the `/saved-news` route.
+✅ This account already contains saved articles, so you can test the `/saved-news` route directly.
 
 ---
 
-## 🔧 Project Structure
+## ✅ Features
+
+- Full-text news search via NewsAPI.org
+- Shows 3 articles at a time with “Show more” button
+- Preloader and empty result handling
+- Save/delete articles in personal collection
+- Protected route `/saved-news` for logged-in users
+- JWT-based authentication with auto-login on refresh
+- Fully responsive layout (320px+)
+- Modal system: Sign In, Sign Up, Success popup
+
+---
+
+## 🔧 API and Environment
+
+- Backend API: [https://api.news.ugo.si/news-api](https://api.news.ugo.si/news-api)
+
+Environment variable required in `.env`:
+
+```env
+VITE_BASE_URL=https://api.news.ugo.si/news-api
+```
+
+---
+
+## 🗂 Project Structure
 
 - **React + Vite** project using functional components and hooks
-- Fully responsive layout from 320px+
 - Semantic JSX with proper BEM class naming
 - Components:
-  - `SearchForm` — input for topic search
-  - `Preloader` — loading spinner
-  - `NewsCardList` + `NewsCard` — article list with “Show more”
-  - `LoginModal`, `RegisterModal`, `SuccessModal` — authentication modals
-  - `ProtectedRoute` — secure routing logic
-- Connected to **NewsAPI.org** with fetch logic in `utils/newsApi.js`
+  - `SearchForm`, `Preloader`, `NewsCardList`, `NewsCard`
+  - `LoginModal`, `RegisterModal`, `SuccessModal`
+  - `ProtectedRoute`, `SavedNews`, `Header`, `Footer`
 
 ---
 
-## ✅ Features Implemented
-
-- Search for articles over the past 7 days
-- Shows 3 articles at a time with “Show more” button
-- Preloader during API call
-- “Nothing found” message for empty results
-- Modal popup logic working (Sign In, Sign Up, Success)
-- Layout matches the Figma design (Stage 1 spec)
-
----
-
-## 🗂 Tech Stack
+## 🛠 Tech Stack
 
 - React 18 + Vite
-- Vanilla CSS (modularized)
-- NewsAPI.org
 - React Router v6
+- Vanilla CSS Modules (BEM)
+- NewsAPI.org
+- Custom Express.js + MongoDB backend
+- GCP + nginx (production hosting)
 
 ---
 
@@ -61,4 +73,10 @@ npm install
 npm run dev
 ```
 
-<!-- TEMP CHANGE FOR PR -->
+Runs at `http://localhost:3002` if set in `vite.config.js`.
+
+---
+
+## 📄 License
+
+MIT — free to use, modify, and deploy.
